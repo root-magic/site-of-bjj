@@ -180,6 +180,15 @@ p, li, span, a, .btn {
     color: #000000 !important;
 }
 
+
+@media (max-width: 576px) {
+    .image-block-section img {
+        height: 300px !important; /* На маленьких телефонах делаем чуть компактнее */
+    }
+    .image-block-section .promo-text {
+        font-size: 2rem !important; /* Уменьшаем заголовок, чтобы не переносился криво */
+    }
+}
 /* Якоря */
 section[id] {
     scroll-margin-top: 80px;
