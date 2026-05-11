@@ -1,109 +1,55 @@
+/* 1. ГЛОБАЛЬНЫЕ НАСТРОЙКИ */
+* {
+    /* Применяем шрифт ко всем элементам без исключения */
+    font-family: 'Saira Extra Condensed', sans-serif !important;
+    text-transform: uppercase; /* Всё в верхнем регистре как в лого */
+}
+
 html, body {
     max-width: 100%;
     overflow-x: hidden;
-    /* Убираем жесткую высоту, чтобы body растягивался по контенту */
     height: auto; 
     min-height: 100%;
 }
 
 body {
-    background-color: #ffffff;
+    font-weight: 300;
+    background-color: #ffffff; 
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center center;
     background-size: cover;
+    color: #000000; /* Цвет основного текста теперь черный */
 }
 
-@media (max-width: 768px) {
-    body {
-        /* На мобильных фиксированный фон часто "ломает" верстку */
-        background-attachment: scroll !important; 
-        background-size: cover;
-        background-position: center top;
-    }
+/* 2. ТИПОГРАФИКА */
+h1, h2, h3, h4, h5, .section-title, .promo-text, .navbar-brand, .tex {
+    font-weight: 100 !important; /* Тонкий как в лого */
+    letter-spacing: 5px;        /* Разрядка букв */
+    line-height: 1.1;
 }
 
-
-.dropdown-toggle::after {
-  content: none;
+/* Обычные параграфы и списки */
+p, li, span, a, .btn {
+    font-weight: 200;           /* Чуть плотнее для читаемости */
+    letter-spacing: 1px;
 }
 
-.custom-shadow {
-  box-shadow: 5px 5px 25px 19px #000000;
+.card-title {
+    font-weight: 400;
+    letter-spacing: 2px;
 }
 
-.product_id {
-  color: gray;
-  font-size: 15px;
-}
-
-.badge.bg-warning.text-dark {
-  position: absolute;
-  top: 10px;
-  right: 5px;
-  z-index: 1;
-  padding: 5px 10px;
-  border-radius: 3px;
-  font-size: 1rem;
-  box-shadow: 2px 2px 15px 9px #000000;
-}
-
-.badge-banner {
-  top: 80%;
-  border-radius: 15px;
-  font-size: 0.7rem;
-}
-
+/* 3. НАВИГАЦИЯ */
 .navbar-color {
-    background-color: #212529 !important; /* Стандартный темно-серый Bootstrap */
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Светлая полоска снизу */
+    background-color: #000000 !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.hide {
-    opacity: 0;
-    filter: blur(5px);
-    transform: translateX(-100%);
-    transition: all 1s;
-}
-
-.show {
-    opacity: 1;
-    filter: blur(0);
-    transform: translateX(0);
-}
-
-/* Чтобы изображения не дергались, можно добавить задержку */
-.el:nth-child(2) { transition-delay: 200ms; }
-
-
-
-/* Контейнер для прямоугольника */
-.promo-box {
-    background-color: #000000; 
-    padding: 2rem 3rem;        /* Внутренние отступы */
-    display: inline-block;     /* Чтобы блок облегал текст */
-    box-shadow: 10px 10px 0px rgba(0, 0, 0, 0.1); /* Небольшая тень для объема */
-    margin-top: 150px;          /* Аналог mt-5 */
-}
-
-/* Стиль самого текста */
-.promo-text {
-    color: #ffffff;            /* Белый текст */
-    text-transform: uppercase; /* Все заглавные для брутальности */
-    letter-spacing: 2px;       /* Расстояние между буквами */
-    line-height: 1.2;
-    margin: 0;                 /* Сбрасываем лишние отступы h1 */
-}
-
-/* Адаптивность для мобилок */
-@media (max-width: 768px) {
-    .promo-box {
-        padding: 1.5rem;
-        display: block;        /* На мобильных во всю ширину */
-    }
-    .promo-text {
-        font-size: 1.5rem;
-    }
+/* Цвет ссылок в навбаре, чтобы они были видны на черном фоне */
+.navbar-nav .nav-link {
+    color: #ffffff !important;
 }
 
 .navbar-center {
@@ -113,118 +59,128 @@ body {
     z-index: 1000;
 }
 
-/* Мобилки: логотип возвращается в поток, чтобы не мешать бургеру */
+/* 4. СЕКЦИИ */
+.start-section, .trener-section, .about-section {
+    width: 100%;
+    position: relative;
+    clear: both;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.promo-box {
+    background-color: #000000; 
+    padding: 2rem 3rem;
+    display: inline-block;
+    box-shadow: 10px 10px 0px rgba(255, 255, 255, 0.1);
+    margin-top: 150px;
+}
+
+.coach-details {
+    background-color: #212529 !important;
+    border-left: 4px solid #ffffff;
+    padding: 20px;
+}
+
+/* 5. АНИМАЦИИ */
+.hide {
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateX(-50px);
+    transition: all 1s;
+}
+
+.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateX(0);
+}
+
+/* 6. АДАПТИВНОСТЬ (МОБИЛКИ) */
 @media (max-width: 991px) {
     .navbar-center {
         position: static; 
         transform: none;
-        left: auto;
-        margin-left: 0;
     }
-
     .container-fluid {
-        /* Распределяем лого и кнопку по краям */
         display: flex;
         justify-content: space-between !important;
     }
-    
     .navbar-collapse {
-        /* Убираем лишний отступ, чтобы меню не улетало вниз */
-        margin-top: 15px; 
+        margin-top: 15px;
     }
-}
-
-/* Если нужно, чтобы логотип был крупным и брутальным */
-.tex {
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-
-
-.start-section,
-.trener-section, 
-.about-section {
-    width: 100%;        /* полная ширина */
-    position: relative; /* независимое позиционирование */
-    margin-top: 0;      /* убраны отступы сверху */
-    clear: both; 
-    min-height: 100vh;       /* ПРИНУДИТЕЛЬНЫЙ ПЕРЕНОС - самое важное! */
-}
-
-@media (max-width: 768px) {
-    .start-section,
-    .trener-section,
-    .about-section {
-        /* На мобилках лучше давать контенту дышать, чем жестко ограничивать высотой */
-        min-height: auto; 
-        padding-top: 60px !important;
-        padding-bottom: 60px !important;
-    }
-    
-    /* Уменьшаем огромный отступ в начале страницы для мобилок */
-    .promo-box {
-        margin-top: 50px; 
-        width: 100%;
-    }
-}
-
-
-.coach-details {
-  
-    background-color: #212529 !important;
-    border-left: 4px solid #ffffff; 
-}
-
-@media (max-width: 991px) {
     .coach-details {
         border-left: none;
         border-top: 4px solid #ffffff;
     }
 }
 
-/* Общий заголовок для секций */
-.section-title {
-    text-transform: uppercase;
-    letter-spacing: 4px;
-    font-weight: 800;
-    position: relative;
-    padding-bottom: 15px;
-    margin-top: 50px; /* Дополнительный отступ сверху */
-}
-
-/* Декоративная линия под заголовком (по желанию) */
-.section-title::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 4px;
-    background-color: #ffc107; /* Желтый цвет как у warning */
-}
-
-/* Настройка отступов между секциями */
-.trener-section, 
-.about-section {
-    padding-top: 100px !important;   /* Отступ сверху */
-    padding-bottom: 100px !important; /* Отступ снизу */
-    min-height: auto !important;     /* Убираем 100vh, если секции стали слишком длинными */
-}
-
-/* Исправляем отступ для якоря (чтобы хедер не закрывал заголовок при переходе) */
-section[id] {
-    scroll-margin-top: 100px;
-}
-
 @media (max-width: 768px) {
     body {
-        /* На мобилках фон будет скроллиться вместе с контентом, что уберет баги */
-        background-attachment: scroll;
-        background-size: cover;
-        background-position: center top; /* Чтобы головы на фото не обрезались */
+        background-attachment: scroll !important;
+    }
+    .start-section, .trener-section, .about-section {
+        min-height: auto;
+        padding: 80px 0 !important;
+    }
+    .promo-box {
+        margin-top: 80px;
+        padding: 1.5rem;
+        display: block;
+    }
+    .section-title {
+        font-size: 1.8rem;
     }
 }
 
+/* Общий стиль для информационного блока в меню */
+.menu-info-block {
+    text-transform: uppercase;
+}
+
+.menu-info-block h3 {
+    font-weight: 300 !important;
+    letter-spacing: 3px;
+    margin-top: 2rem;
+}
+
+.menu-info-block p {
+    font-weight: 100 !important;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+}
+
+.menu-info-block .promo-text {
+    font-weight: 100 !important;
+    letter-spacing: 6px;
+}
+
+/* СТИЛИ ДЛЯ ТЕКСТА О ДЖИУ-ДЖИТСУ (ФИЛОСОФИЯ) */
+.philosophy-black-text {
+    font-size: 1.8rem;
+    font-weight: 200 !important; 
+    line-height: 1.3;
+    color: #000000 !important;
+}
+
+.philosophy-black-subtext {
+    font-size: 1.5rem;
+    font-weight: 100 !important;
+    letter-spacing: 0.5px;
+    color: #000000 !important;
+    opacity: 0.9;
+}
+
+.philosophy-black-text-caps {
+    font-size: 1.4rem;
+    font-weight: 200 !important;
+    letter-spacing: 1.5px;
+    color: #000000 !important;
+}
+
+/* Якоря */
+section[id] {
+    scroll-margin-top: 80px;
+}
