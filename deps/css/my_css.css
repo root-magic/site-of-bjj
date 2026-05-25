@@ -22,6 +22,10 @@ body {
     color: #000000; /* Цвет основного текста теперь черный */
 }
 
+
+
+
+
 /* 2. ТИПОГРАФИКА */
 h1, h2, h3, h4, h5, .section-title, .promo-text, .navbar-brand, .tex {
     font-weight: 100 !important; /* Тонкий как в лого */
@@ -76,6 +80,17 @@ p, li, span, a, .btn {
     display: inline-block;
     box-shadow: 10px 10px 0px rgba(255, 255, 255, 0.1);
     margin-top: 150px;
+}
+
+.promo-text a {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+/* Добавим эффект при наведении, чтобы было понятно, что это кнопка */
+.promo-text a:hover {
+    opacity: 0.8;
+    color: #ffc107 !important; /* Станет золотистым при наведении */
 }
 
 .coach-details {
@@ -189,6 +204,64 @@ p, li, span, a, .btn {
         font-size: 2rem !important; /* Уменьшаем заголовок, чтобы не переносился криво */
     }
 }
+
+/* ГАЛЕРЕЯ */
+.photo-gallery-wrap {
+    position: relative;
+}
+
+.photo-gallery {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.photo-gallery img {
+    flex: 0 0 500px;
+    height: 360px;
+    object-fit: cover;
+    border-radius: 12px;
+    scroll-snap-align: start;
+}
+
+.gallery-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    background: #fff;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: background 0.2s;
+}
+
+.gallery-btn:hover {
+    background: #f0f0f0;
+}
+
+.gallery-btn--prev { left: -20px; }
+.gallery-btn--next { right: -20px; }
+
+@media (max-width: 768px) {
+    .photo-gallery img {
+        flex: 0 0 85vw;
+        height: 260px;
+    }
+    .gallery-btn--prev { left: 4px; }
+    .gallery-btn--next { right: 4px; }
+}
+
 /* Якоря */
 section[id] {
     scroll-margin-top: 80px;
